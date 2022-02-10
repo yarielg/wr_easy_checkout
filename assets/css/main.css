@@ -1,0 +1,272 @@
+/*Modal*/
+.wrech-modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: white;
+    width: 420px;
+    bottom: 0;
+    z-index: 100000;
+    -webkit-box-shadow: -2px 2px 6px -2px #000000;
+    box-shadow: -2px 2px 6px -2px #000000;
+    overflow: hidden;
+}
+.wrech-modal .wrech-main{
+    overflow: auto;
+    height: calc(100% - 300px);
+    padding: 20px;
+}
+
+.wrech-header-modal, .wrech-footer-modal{
+    height: 100px;
+    -webkit-box-shadow: -2px 2px 6px -2px #000000;
+    box-shadow: -2px 2px 6px -2px #000000;
+    position: relative;
+    z-index: 9999;
+}
+
+.wrech-footer-modal{
+    height: 230px;
+}
+
+.wrech-mask-loading{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    background: black;
+    z-index: 1000002;
+    opacity: 0.2;
+}
+.mask-icon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.wrech-cart-count{
+    position: absolute;
+    top: -10px;
+    background: black;
+    color: wheat;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    border-radius: 50%;
+    right: 0;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.wrech-header-modal{
+    height: 80px;
+}
+
+.wrech-header-modal{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#wrech-coupon-form{
+    margin-bottom: 0 !important;
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.wrech-step{
+    /*display: none;*/
+}
+
+.wrech-float-btn{
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    -webkit-box-shadow: -2px 2px 6px -2px #000000;
+    box-shadow: -2px 2px 6px -2px #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 99999999;
+    background: white;
+}
+
+.wrech_mini_cart_item{
+    margin-bottom: 12px;
+}
+
+.
+
+/* Coupon */
+#wrech-coupon_code{
+    width: 120px;
+    font-size: 14px;
+}
+
+img.wrech-close-modal{
+    width: 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#wrech-apply-coupon{
+    width: 140px;
+    font-size: 14px;
+}
+
+/*Cart*/
+.wrech_mini_cart_item img{
+    width: 50px;
+    display: inline-block;
+}
+
+.wrech_mini_cart_item span.wrech-cart-item-name{
+    display: block;
+    font-size: 15px;
+}
+
+.wrech-cart-wrapper{
+    list-style: none;
+}
+
+.wrech_mini_cart_item{
+
+}
+
+.wrech-empty-cart{
+    opacity: 0.2;
+    display: flex;
+}
+
+.wrech-empty-cart img{
+    width: 150px;
+    margin: auto;
+}
+
+.wrech-empty-cart,.wrech-step-cart{
+    height: 100%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.wrech_mini_cart_item input::-webkit-outer-spin-button,
+.wrech_mini_cart_item input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.wrech_mini_cart_item input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.wrech-quantity{
+    height: 30px;
+    width: 50px;
+    box-shadow: none!important;
+    background: white !important;
+    border: 1px solid lightgray;
+    text-align: center;
+}
+.wrech-change-quantity{
+    border: 1px solid lightgray;
+    padding: 1px 8px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.wrech-cart-wrapper{
+    margin: 0;
+}
+
+img.wrech_remove_item_img{
+    width: 18px;
+}
+
+.wrech_cart_item_remove{
+    float: right;
+}
+
+/*General*/
+.wrech-col{
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+}
+.wrech-col-1{
+    width: 8%;
+}
+
+.wrech-col-2{
+    width: 16%;
+}
+
+.wrech-col-3{
+    width: 24%;
+}
+
+.wrech-col-4{
+    width: 32%;
+}
+.wrech-col-5{
+    width: 40%;
+}
+
+.wrech-col-6{
+    width: 48%;
+}
+.wrech-col-7{
+    width: 56%;
+}
+
+.wrech-col-8{
+    width: 64%;
+}
+
+.wrech-col-9{
+    width: 72%;
+}
+
+.wrech-col-10{
+    width: 80%;
+}
+
+.wrech-col-11{
+    width: 88%;
+}
+
+.wrech-col-11{
+    width: 96%;
+}
+
+.wrech-modal .woocommerce-error, .woocommerce-NoticeGroup{
+    display: none;
+}
+
+.wrech-btn{
+    height: 40px;
+    font-size: 15px;
+    padding: 12px;
+    line-height: normal;
+}
+
+/* Select2*/
+.select2-dropdown{
+    z-index: 1000001 !important;
+}
+
+/*Toatsr*/
+#toast-container{
+    z-index: 1000003 !important;
+}
+
+
+
+
+
+
