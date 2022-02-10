@@ -5,13 +5,13 @@
 
 
 Plugin Name:  Easy Checkout
-Plugin URI:   https://thomasgbennett.com/
+Plugin URI:   https://webreadynow.com
 Description:  This plugin implement the
 Version:      1.0.0
-Author:       Bennet Group (Yariel Gordillo)
-Author URI:   https://thomasgbennett.com/
+Author:       Yariel Gordillo from webready
+Author URI:   https://webreadynow.com
 Tested up to: 5.3.2
-Text Domain:  kgm_dealer
+Text Domain:  wrech
 Domain Path:  /languages
 */
 
