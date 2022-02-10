@@ -87,9 +87,11 @@ class Checkout{
 	 * @return bool
 	 */
 	public static function is_checkout() {
-		$page_id = wc_get_page_id( 'checkout' );
+		/*$page_id = wc_get_page_id( 'checkout' );
 
-		return ( $page_id && is_page( $page_id ) ) || wc_post_content_has_shortcode( 'woocommerce_checkout' );
+		return ( $page_id && is_page( $page_id ) ) || wc_post_content_has_shortcode( 'woocommerce_checkout' );*/
+
+        return false;
 	}
 
 	public static function checkout_form($checkout){
