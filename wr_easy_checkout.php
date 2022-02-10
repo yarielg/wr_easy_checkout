@@ -6,7 +6,7 @@
 
 Plugin Name:  Easy Checkout
 Plugin URI:   https://webreadynow.com
-Description:  This plugin implement an easy checkout flow
+Description:  This plugin implement an easy checkout flow.
 Version:      1.0.0
 Author:       Yariel Gordillo from webready
 Author URI:   https://webreadynow.com
@@ -15,6 +15,7 @@ Text Domain:  wrech
 Domain Path:  /languages
 */
 
+defined('ABSPATH') or die('You do not have access, sally human!!!');
 
 define ( 'WRECH_PLUGIN_VERSION', '1.0.0');
 
