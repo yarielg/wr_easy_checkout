@@ -149,7 +149,7 @@ class Checkout{
         <form id="wrech-coupon-form" class="wrech-coupon-form wrech-checkout_coupon" method="post">
 
                 <input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="wrech-coupon_code" value="" />
-                <button id="wrech-apply-coupon" type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
+                <button id="wrech-apply-coupon" type="submit" class="button wrech-btn" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
 
             <div class="clear"></div>
 

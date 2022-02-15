@@ -1046,6 +1046,9 @@ jQuery( function( $ ) {
         },
         initialStepsState(){
             $('.wrech-step').hide();
+        },
+        check_info_form(){
+
         }
     };
 

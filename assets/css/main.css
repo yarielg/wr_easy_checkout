@@ -248,11 +248,31 @@ img.wrech_remove_item_img{
     display: none;
 }
 
+.wrech-actions{
+    text-align: center;
+}
+
 .wrech-btn{
     height: 40px;
     font-size: 15px;
-    padding: 12px;
     line-height: normal;
+    width: 30%;
+    padding: 1px;
+    color:white;
+    background: black;
+}
+
+.wrech-checkout input[type='text'],
+.wrech-checkout input[type='phone'],
+.wrech-checkout input[type='number'],
+.wrech-checkout input[type='email'],
+.wrech-checkout .select2-selection--single,
+.wrech-checkout .select2-container,
+.wrech-checkout .input-text
+{
+    height: 40px !important;
+    font-size: 15px !important;
+    width: 100% !important;
 }
 
 /* Select2*/
