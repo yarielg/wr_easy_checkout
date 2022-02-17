@@ -23,6 +23,7 @@ class Enqueue{
      * Enqueueing the main scripts with all the javascript logic that this plugin offer
      */
     function wrech_enqueue_frontend(){
+
         if(!Checkout::is_checkout() && !is_cart()){
 	        wp_enqueue_style('main-css', WRECH_PLUGIN_URL . '/assets/css/main.css');
 	        wp_enqueue_style('toastr-css', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css');

@@ -6,7 +6,7 @@
 
 Plugin Name:  Easy Checkout
 Plugin URI:   https://webreadynow.com
-Description:  This plugin implement an easy checkout flow...
+Description:  This plugin implement an easy checkout flow
 Version:      1.0.0
 Author:       Yariel Gordillo from webready
 Author URI:   https://webreadynow.com

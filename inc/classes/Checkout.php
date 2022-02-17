@@ -10,9 +10,6 @@ namespace Wrech\Inc\Classes;
 
 class Checkout{
 
-	public function __construct() {
-	}
-
 	public static function checkout() {
 		return \WC_Checkout::instance();
 	}
