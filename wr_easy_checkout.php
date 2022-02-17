@@ -31,10 +31,25 @@ define('WRECH_PLUGIN_DIR_BASENAME' , dirname(plugin_basename(__FILE__)) );
 
 //include the helpers
 include 'inc/util/helpers.php';
-if( class_exists( 'Wrech\\Inc\\Init' ) ){
-    register_activation_hook( __FILE__ , array('Wrech\\Inc\\Base\\Activate','activate') );
-    Wrech\Inc\Init::register_services();
+
+if ( wrech_stripe_is_active() ){
+	if( class_exists( 'Wrech\\Inc\\Init' ) ){
+
+		register_activation_hook( __FILE__ , array('Wrech\\Inc\\Base\\Activate','activate') );
+		Wrech\Inc\Init::register_services();
+
+	}else{
+
+		add_action('admin_notices', function(){
+			?>
+			<div class="notice notice-error is-dismissible">
+				<p>WR Price List Manager required WooCommerce, please activate it to use <b>WR Price List Manager</b> Plugin</p>
+			</div>
+			<?php
+		});
+	}
 }
+
 
 
 
