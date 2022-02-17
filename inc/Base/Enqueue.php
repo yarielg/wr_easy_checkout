@@ -32,7 +32,11 @@ class Enqueue{
 	        wp_enqueue_script('toastr-js', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js' ,array(),'1.0', true);
 	        wp_enqueue_script('main-js', WRECH_PLUGIN_URL  . '/assets/js/main.js' ,array('jquery'),'1.0', true);
 	        wp_enqueue_script('select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js' ,array(),'1.0', true);
-	        wp_enqueue_script('checkout-js', WRECH_PLUGIN_URL  . '/assets/js/checkout.js' ,array('jquery','toastr-js','select2-js','woocommerce_stripe'),'1.0', true);
+
+	        $checkout_js_dependencies = ['jquery','toastr-js','select2-js'];
+	        //woocommerce_stripe
+
+	        wp_enqueue_script('checkout-js', WRECH_PLUGIN_URL  . '/assets/js/checkout.js' ,$checkout_js_dependencies,'1.0', true);
 	        //wp_enqueue_script('modal-js', WRECH_PLUGIN_URL  . '/assets/js/modal.js' ,array('jquery','toastr-js','checkout-js'),'1.0', true);
 	        //wp_enqueue_script('checkout-js', plugins_url()  . '/woocommerce/assets/js/frontend/checkout.js' ,array('jquery','checkout-js'),'1.0', false);
 
