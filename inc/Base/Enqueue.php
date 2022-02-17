@@ -34,7 +34,7 @@ class Enqueue{
 	        wp_enqueue_script('select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js' ,array(),'1.0', true);
 
 	        $checkout_js_dependencies = ['jquery','toastr-js','select2-js'];
-	        if(wrech_stripe_is_active()){
+	        if(is_plugin_active('woocommerce-gateway-stripe/woocommerce-gateway-stripe.php')){
 	        	$checkout_js_dependencies[] = 'woocommerce_stripe';
 	        }
 
