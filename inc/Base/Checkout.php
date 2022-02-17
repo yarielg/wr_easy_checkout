@@ -6,7 +6,7 @@
 * Class to dealing with the html element of checkout
 */
 
-namespace Wrech\Inc\Classes;
+namespace Wrech\Inc\Base;
 
 class Checkout{
 

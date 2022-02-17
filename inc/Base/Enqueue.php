@@ -9,7 +9,7 @@
 namespace Wrech\Inc\Base;
 
 use WC_AJAX;
-use Wrech\Inc\Classes\Checkout;
+use Wrech\Inc\Base\Checkout;
 
 class Enqueue{
 

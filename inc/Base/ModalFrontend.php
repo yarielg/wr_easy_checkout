@@ -8,7 +8,7 @@
 
 namespace Wrech\Inc\Base;
 
-use Wrech\Inc\Classes\Checkout;
+use Wrech\Inc\Base\Checkout;
 
 class ModalFrontend{
 
