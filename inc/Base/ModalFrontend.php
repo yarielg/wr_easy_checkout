@@ -93,7 +93,7 @@ class ModalFrontend{
 
     function add_modal(){
 
-        if(!Checkout::is_checkout() && !is_cart()){
+        if(!Checkout::is_checkout()){
         ?>
         <div class="woocommerce wrech-modal" style="display: none">
             <div class="wrech-mask-container">

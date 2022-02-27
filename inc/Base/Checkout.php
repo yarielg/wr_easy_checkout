@@ -79,14 +79,25 @@ class Checkout{
     }
 
 	/**
-	 * Is_checkout - Returns true when viewing the checkout page.
+	 * Is_checkout - Returns true when viewing the checkout page or when the modal don't need to be shown
 	 *
 	 * @return bool
 	 */
 	public static function is_checkout() {
-		$page_id = wc_get_page_id( 'checkout' );
+		global $post;
+		$page_id = $post->ID;
 
-		return ( $page_id && is_page( $page_id ) ) || wc_post_content_has_shortcode( 'woocommerce_checkout' );
+		//Getting the shop page id since getting it from the global post will return the first id from the product loop or any other loop
+		if(is_shop()){
+			$page_id = wc_get_page_id('shop');
+		}
+
+		$page_woo_id = wc_get_page_id( 'checkout' );
+
+		//Excluded pages
+		$excluded_page_id = wrech_settings('excluded_pages');
+		$excluded_page_id = $excluded_page_id !== '' ? explode(',', wrech_settings('excluded_pages')) : [];
+		return ( $page_woo_id && is_page( $page_woo_id ) ) || wc_post_content_has_shortcode( 'woocommerce_checkout' ) || in_array($page_id,$excluded_page_id) || is_cart();
 	}
 
 	public static function checkout_form($checkout){

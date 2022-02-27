@@ -38,6 +38,7 @@ class Ajax {
 	    add_action( 'wp_ajax_wrech_save_customizations', array($this,'save_customizations'));
 	    add_action( 'wp_ajax_wrech_add_cart_icon', array($this,'add_cart_icon'));
 	    add_action( 'wp_ajax_wrech_default_icon', array($this,'default_icon'));
+	    add_action( 'wp_ajax_wrech_get_pages', array($this,'get_pages'));
 
 	    /*add_action( 'wp_ajax_nopriv_wrech_check_form', array($this,'check_form'));
 	    add_action( 'wp_ajax_wrech_check_form', array($this,'check_form'));*/
@@ -62,6 +63,43 @@ class Ajax {
 
     	var_dump($errors);
     }*/
+	/**
+	 * Get all the site pages
+	 */
+	function get_pages(){
+
+		$cart_page_id = get_option( 'woocommerce_cart_page_id' );
+		$checkout_page_id = get_option( 'woocommerce_checkout_page_id' );
+
+		$args = array(
+			'sort_order' => 'asc',
+			'sort_column' => 'ID',
+			'hierarchical' => 1,
+			'child_of' => 0,
+			'parent' => -1,
+			'post_type' => 'page',
+			'post_status' => 'publish',
+			'exclude' => array($cart_page_id,$checkout_page_id),
+		);
+		$pages = get_pages($args); // get all pages based on supplied args
+
+		array_push($pages,array('ID' => 1, 'post_title' => 'Home'));
+
+		$excluded_page_id = wrech_settings('excluded_pages');
+
+		$excluded_page_id = $excluded_page_id !== '' ? explode(',', wrech_settings('excluded_pages')) : [];
+
+		//Converting array value into int, this is needed for the multiple select component to work
+		$excluded_pages = array();
+		foreach ($excluded_page_id as $page_id){
+			$excluded_pages[] = intval($page_id);
+		}
+
+		echo  json_encode(array('success' => true, 'pages' => $pages, 'excluded_pages' => $excluded_pages));
+		wp_die();
+
+	}
+
 	/**
 	 * Putting back the default icon
 	 */
@@ -105,15 +143,13 @@ class Ajax {
 
 		$settings = array();
 		$settings['float_btn_position'] = $_POST['float_btn_position'];
+		$settings['excluded_pages'] = $_POST['excluded_pages'];
 
 		wrech_save_settings($settings);
 		echo  json_encode(array('success' => true, 'post' => $_POST));
 		wp_die();
-
-
 		/*echo  json_encode(array('success' => false, 'msg' => 'The settings were not saved'));
 		wp_die();*/
-
 	}
 
 	/**

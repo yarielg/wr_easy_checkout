@@ -25,7 +25,7 @@ class Enqueue{
      */
     function wrech_enqueue_frontend(){
 
-        if(!Checkout::is_checkout() && !is_cart()){
+        if(!Checkout::is_checkout()){
 	        wp_enqueue_style('main-css', WRECH_PLUGIN_URL . '/assets/css/main.css');
 	       // wp_add_inline_style( 'main-css', array($this, 'dynamic_settings_styles') );
 

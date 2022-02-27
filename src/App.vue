@@ -4,12 +4,12 @@
     <el-row class="tac">
       <el-col :span="6" class="wrech-sidebar">
         <el-menu
-                default-active="1"
+                default-active="2"
                 class="el-menu-vertical-main"
                 @open="handleOpen"
                 @close="handleClose"
         >
-          <el-sub-menu index="1">
+          <!--<el-sub-menu index="1">
             <template #title>
               <el-icon><list /></el-icon>
               <span>General</span>
@@ -25,12 +25,12 @@
               <template #title>item four</template>
               <el-menu-item index="1-4-1">item one</el-menu-item>
             </el-sub-menu>
-          </el-sub-menu>
-          <el-menu-item index="2">
+          </el-sub-menu>-->
+          <el-menu-item index="2" @click="changeScreen('cart')">
             <el-icon><shopping-cart /></el-icon>
             <span>Cart Styles</span>
           </el-menu-item>
-          <el-menu-item index="3">
+          <el-menu-item index="3" @click="changeScreen('settings')">
             <el-icon><setting /></el-icon>
             <span>Settings</span>
           </el-menu-item>
@@ -42,37 +42,53 @@
       </el-col>
       <el-col :span="18" class="main-area">
 
-        <p class="wrech-label"><strong>Cart Float Button Position</strong>:</p>
-        <el-form-item>
-          <el-radio-group v-model="float_btn_position">
-            <el-radio-button class="btn_position" label="bottom_left" ><img class="position_image" :src="plugin_url + '/assets/images/bottom_left.png'" alt=""></el-radio-button>
-            <el-radio-button class="btn_position" label="bottom_right" ><img class="position_image" :src="plugin_url + '/assets/images/bottom_right.png'" alt=""></el-radio-button>
-            <el-radio-button class="btn_position" label="up_right" ><img class="position_image" :src="plugin_url + '/assets/images/up_right.png'" alt=""></el-radio-button>
-            <el-radio-button class="btn_position" label="up_left"><img class="position_image" :src="plugin_url + '/assets/images/up_left.png'" alt=""></el-radio-button>
-          </el-radio-group>
-        </el-form-item>
+       <div class="cart" v-show="active_screen === 'cart'">
+         <p class="wrech-label"><strong>Cart Float Button Position</strong>:</p>
+         <el-form-item>
+           <el-radio-group v-model="float_btn_position">
+             <el-radio-button class="btn_position" label="bottom_left" ><img class="position_image" :src="plugin_url + '/assets/images/bottom_left.png'" alt=""></el-radio-button>
+             <el-radio-button class="btn_position" label="bottom_right" ><img class="position_image" :src="plugin_url + '/assets/images/bottom_right.png'" alt=""></el-radio-button>
+             <el-radio-button class="btn_position" label="up_right" ><img class="position_image" :src="plugin_url + '/assets/images/up_right.png'" alt=""></el-radio-button>
+             <el-radio-button class="btn_position" label="up_left"><img class="position_image" :src="plugin_url + '/assets/images/up_left.png'" alt=""></el-radio-button>
+           </el-radio-group>
+         </el-form-item>
 
-        <br>
-        <p class="wrech-label"><strong>Cart Icon:</strong></p>
-        <el-upload
-                ref="upload"
-                :action="ajax_url"
-                :data="file_data"
-                list-type="picture-card"
-                accept="image/png, image/jpeg"
-                :file-list="uploaded_files"
-                :limit="1"
-                :on-exceed="handleExceed"
-                :on-success="iconUploaded"
-                :on-progress="iconUploading"
-                :on-error="iconUploadError"
-                :on-change="fileChanged"
-                :on-remove="defaultIcon"
-                class="wrech_single_uploader"
-        >
-          <el-icon><plus /></el-icon>
-        </el-upload>
-        {{files}}
+         <br>
+         <p class="wrech-label"><strong>Cart Icon:</strong></p>
+         <el-upload
+                 ref="upload"
+                 :action="ajax_url"
+                 :data="file_data"
+                 list-type="picture-card"
+                 accept="image/png, image/jpeg"
+                 :file-list="uploaded_files"
+                 :limit="1"
+                 :on-exceed="handleExceed"
+                 :on-success="iconUploaded"
+                 :on-progress="iconUploading"
+                 :on-error="iconUploadError"
+                 :on-change="fileChanged"
+                 :on-remove="defaultIcon"
+                 class="wrech_single_uploader"
+         >
+           <el-icon><plus /></el-icon>
+         </el-upload>
+       </div>
+        <div class="settings" v-show="active_screen === 'settings'">
+          <p class="wrech-label"><strong>Excluded Pages:</strong></p>
+
+          <el-select v-model="excluded_pages"  multiple placeholder="Select Pages" size="large" class="wrech-select">
+            <el-option
+                    v-for="page in pages"
+                    :key="page.ID"
+                    :label="page.post_title + ' ID: ' +page.ID"
+                    :value="page.ID"
+            >
+            </el-option>
+          </el-select>
+          <p class="wrech-field-description mt-3">List pages where the cart modal won't show, Cart and checkout page are excluded.</p>
+        </div>
+
         <br>
         <el-button type="primary" @click="saveCustomization()" round>Save Settings <el-icon class="el-icon--right"> <check /></el-icon></el-button>
     </el-col>
@@ -102,13 +118,23 @@
           action: 'wrech_add_cart_icon'
         },
         plugin_url: wrech_settings_params.plugin_url,
-        ajax_url: wrech_settings_params.ajax_url
+        ajax_url: wrech_settings_params.ajax_url,
+        active_screen: 'cart',
+        pages: [],
+        excluded_pages: []
       }
     },
-    created(){
+    computed:{
 
     },
+    created(){
+      this.getPages();
+    },
     methods:{
+      changeScreen(screen){
+        this.active_screen = screen;
+        console.log(screen)
+      },
       fileChanged(file){
         // this.$refs.upload.submit();
       },
@@ -147,6 +173,8 @@
         const formData = new FormData();
         formData.append('action', 'wrech_save_customizations');
         formData.append('float_btn_position', this.float_btn_position);
+        formData.append('excluded_pages', this.excluded_pages);
+
         this.loading = true;
         axios.post(wrech_settings_params.ajax_url, formData)
             .then( response => {
@@ -158,6 +186,21 @@
               this.loading = false;
         });
       },
+      getPages(){
+        const formData = new FormData();
+        formData.append('action', 'wrech_get_pages');
+        this.loading = true;
+        axios.post(wrech_settings_params.ajax_url, formData)
+            .then( response => {
+              if(response.data.success){
+                this.pages = response.data.pages;
+                this.excluded_pages = response.data.excluded_pages;
+              }else{
+                ElMessage.error(response.data.msg)
+              }
+        });
+        this.loading = false;
+      }
     }
   }
 </script>
@@ -225,6 +268,10 @@
 
   .main-area{
     padding: 20px !important;
+  }
+
+  .wrech-select{
+    width: 400px;
   }
 
 </style>
