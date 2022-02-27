@@ -58,10 +58,8 @@ function wrech_upload_file( $file, $post_id = 0, $desc = null ) {
 		return new \WP_Error( 'error', 'File is empty' );
 	}
 
-	var_dump($file);
-
 	// Get filename and store it into $file_array
-	preg_match( '/[^\?]+\.(jpe?g|jpe|gif|png)\b/i', $file, $matches );
+	preg_match( '/[^\?]+\.(jpe?g|jpe|gif|png)\b/i', $file['name'], $matches );
 
 	// If error storing temporarily, return the error.
 	if ( is_wp_error( $file['tmp_name'] ) ) {
