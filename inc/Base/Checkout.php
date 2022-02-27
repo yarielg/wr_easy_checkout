@@ -96,7 +96,7 @@ class Checkout{
 
 		//Excluded pages
 		$excluded_page_id = wrech_settings('excluded_pages');
-		$excluded_page_id = $excluded_page_id !== '' ? explode(',', wrech_settings('excluded_pages')) : [];
+		$excluded_page_id = $excluded_page_id !== '' ? explode(',', ) : [];
 		return ( $page_woo_id && is_page( $page_woo_id ) ) || wc_post_content_has_shortcode( 'woocommerce_checkout' ) || in_array($page_id,$excluded_page_id) || is_cart();
 	}
 

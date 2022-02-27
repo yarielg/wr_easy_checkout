@@ -10,7 +10,7 @@ function wrech_settings($field = null){
 		'float_btn_position' => 'bottom_left',
 		'cart_icon_url' => WRECH_PLUGIN_URL . '/assets/images/cart.png',
 		'cart_icon_id' => -1,
-		'excluded_pages' => [],
+		'excluded_pages' => '',
 	);
 
 	$wrech_settings = get_option('wrech_settings', array());
