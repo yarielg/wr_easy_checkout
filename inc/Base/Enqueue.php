@@ -16,6 +16,7 @@ class Enqueue{
     public function register(){
 
         add_action( 'wp_enqueue_scripts',  array($this,'wrech_enqueue_frontend'));
+        add_action( 'wp_head',  array($this,'dynamic_settings_styles'));
 
     }
 
@@ -26,6 +27,9 @@ class Enqueue{
 
         if(!Checkout::is_checkout() && !is_cart()){
 	        wp_enqueue_style('main-css', WRECH_PLUGIN_URL . '/assets/css/main.css');
+	       // wp_add_inline_style( 'main-css', array($this, 'dynamic_settings_styles') );
+
+
 	        wp_enqueue_style('toastr-css', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css');
 	        wp_enqueue_style('select2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
 
@@ -62,5 +66,31 @@ class Enqueue{
 	        wp_localize_script( 'checkout-js', 'wc_checkout_params', $args );
         }
     }
+
+	function dynamic_settings_styles(){
+		$settings = wrech_settings();
+		?>
+		<style wrech_styles>
+			.wrech-float-btn{
+				<?php if($settings['float_btn_position'] === 'bottom_left'){ ?>
+					bottom: 30px;
+					left: 30px;
+				<?php }
+				if($settings['float_btn_position'] === 'bottom_right'){ ?>
+					bottom: 30px;
+					right: 30px;
+				<?php }
+				if($settings['float_btn_position'] === 'up_right'){ ?>
+				top: 30px;
+				right: 30px;
+			<?php }
+			if($settings['float_btn_position'] === 'up_left'){ ?>
+				top: 30px;
+				left: 30px;
+			<?php } ?>
+			}
+		</style>
+		<?php
+	}
 
 }

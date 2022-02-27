@@ -10,6 +10,7 @@ final class Init{
             Base\Ajax::class,
             Base\Enqueue::class,
             Base\ModalFrontend::class,
+            Base\Pages::class
 
         ] ;
     }

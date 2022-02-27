@@ -81,7 +81,7 @@ class ModalFrontend{
         }
 
 	    return sprintf(
-		    '<a href="%s" data-quantity="%s" class="%s tete" %s>%s</a>',
+		    '<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
 		    esc_url( $product->add_to_cart_url() ),
 		    esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
 		    esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),

@@ -193,7 +193,7 @@ class Checkout{
 	    $cart_count = WC()->cart->get_cart_contents_count();
 	    ?>
         <span class="wrech-cart-count"><?php echo $cart_count ?></span>
-        <img src="<?php echo WRECH_PLUGIN_URL . '/assets/images/cart.png' ?>" alt="">
+        <img class="wrech_cart_icon" style="padding: 8px" src="<?php echo wrech_settings('cart_icon_url') ?>" alt="">
         <?php
 
         echo ob_get_clean();

@@ -34,6 +34,11 @@ class Ajax {
 	    add_action( 'wp_ajax_nopriv_wrech_update_order_review', array($this,'update_order_review'));
 	    add_action( 'wp_ajax_wrech_update_order_review', array($this,'update_order_review'));
 
+	    //ADMIN AJAX CALLS
+	    add_action( 'wp_ajax_wrech_save_customizations', array($this,'save_customizations'));
+	    add_action( 'wp_ajax_wrech_add_cart_icon', array($this,'add_cart_icon'));
+	    add_action( 'wp_ajax_wrech_default_icon', array($this,'default_icon'));
+
 	    /*add_action( 'wp_ajax_nopriv_wrech_check_form', array($this,'check_form'));
 	    add_action( 'wp_ajax_wrech_check_form', array($this,'check_form'));*/
 
@@ -57,6 +62,59 @@ class Ajax {
 
     	var_dump($errors);
     }*/
+	/**
+	 * Putting back the default icon
+	 */
+	function default_icon(){
+		wrech_delete_field_settings('cart_icon_url');
+		wrech_delete_field_settings('cart_icon_id');
+
+		echo  json_encode(array('success' => true));
+		wp_die();
+	}
+
+	/**
+	 * Upload the cart Icon
+	 */
+	function add_cart_icon(){
+
+		$image_id = wrech_upload_file($_FILES['file']);
+
+		if($image_id > 0){
+
+			$url = wp_get_attachment_url( $image_id );
+
+			wrech_save_settings(array(
+				'cart_icon_id' => $image_id,
+				'cart_icon_url' => 	$url
+				)
+			);
+
+			echo  json_encode(array('success' => true, 'cart_icon' => array('id' => $image_id, 'url'=> $url)));
+			wp_die();
+		}
+
+		echo  json_encode(array('success' => false, 'msg' => 'The image was not uploaded'));
+		wp_die();
+	}
+
+	/**
+	 * Save the params on the customization tab
+	 */
+	function save_customizations(){
+
+		$settings = array();
+		$settings['float_btn_position'] = $_POST['float_btn_position'];
+
+		wrech_save_settings($settings);
+		echo  json_encode(array('success' => true, 'post' => $_POST));
+		wp_die();
+
+
+		/*echo  json_encode(array('success' => false, 'msg' => 'The settings were not saved'));
+		wp_die();*/
+
+	}
 
 	/**
 	 * AJAX update order review on checkout.
