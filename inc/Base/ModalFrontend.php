@@ -108,7 +108,8 @@ class ModalFrontend{
                                     <div class="wrech-product-info">
                                         <div  class="wrech-product-name"><a href="<?php echo $product_permalink; ?>"><?php echo $product->get_title() ?></a></div>
                                         <div class="wrech-product-price">
-                                            <del><span><?php echo $product->get_regular_price() ? wc_price($product->get_regular_price()) : '' ?></span></del>
+                                            <del><span><?php echo $product->get_regular_price() != 0 &&  $product->get_regular_price() != $product->get_price()
+                                                                    ? wc_price($product->get_regular_price()) : '' ?></span></del>
                                             <span><?php echo wc_price($product->get_price()); ?></span>
                                         </div>
                                     </div>
