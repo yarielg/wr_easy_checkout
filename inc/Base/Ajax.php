@@ -40,29 +40,8 @@ class Ajax {
 	    add_action( 'wp_ajax_wrech_default_icon', array($this,'default_icon'));
 	    add_action( 'wp_ajax_wrech_get_pages', array($this,'get_pages'));
 
-	    /*add_action( 'wp_ajax_nopriv_wrech_check_form', array($this,'check_form'));
-	    add_action( 'wp_ajax_wrech_check_form', array($this,'check_form'));*/
-
-	    /*add_action('woocommerce_after_checkout_validation', function($data,$errors){
-	    	var_dump($errors->errors);
-	    	if(!Checkout::is_checkout() && !is_cart() && ! empty( $errors->errors)){
-			    echo  json_encode(array('success' => false, 'errors' => $errors) );
-			    wp_die();
-		    }
-	    },100,2);*/
     }
 
-    /*function check_form(){
-    	$checkout = WC()->checkout();
-
-    	$posted_data = $checkout->get_posted_data();
-
-	    $errors      = new \WP_Error();
-
-	    Checkout::validate_posted_data($posted_data, $errors);
-
-    	var_dump($errors);
-    }*/
 	/**
 	 * Get all the site pages
 	 */

@@ -274,4 +274,8 @@
     width: 400px;
   }
 
+  .wrech-field-description{
+    font-style: italic;
+  }
+
 </style>

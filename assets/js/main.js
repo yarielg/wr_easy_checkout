@@ -1,75 +1,49 @@
 (function(window, $) {
     "use strict";
 
-    function MapHandler(){
+    function ModalHandler(){
         var self = this;
 
-        self.init();
     }
 
-    MapHandler.prototype = {
+    ModalHandler.prototype = {
 
         init: function () {
             var self = this;
+            this.initSlider();
+            this.footerProductsInterations();
         },
-        initMap(){
+        initSlider(){
+            const swiper = new Swiper('.swiper', {
+                // Optional parameters
+                loop: false,
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
 
+            });
         },
-        loadMarkersAjax(map) {
+        footerProductsInterations(){
 
-        },
-        getLocation(){
+            $('.wrech-products-slider').on('mouseover', function(e){
+                $('.wrech-swipper-prev, .wrech-swipper-next').attr('style','display: flex !important');
+            });
 
-        },
-        showPosition(position) {
-
-        },
-        calcCrow(lat1, lon1, lat2, lon2)
-        {
-
-        },
-        toRad(value)
-        {
-            return value * Math.PI / 180;
-        },
-        getLocationZipCode(){
-
-        },
-        generateClick(id) {
-
-        },
-        preventingPlaceOrder(){
-
-        },
-        addressComponent(address_component){
-
-        },
-        cleanFields(){
-
-        },
-        initAddressAuto(){
-
-        },
-        toggleMap(){
-        },
-        checkDealerFields(){
-
-        },
-        processAddDealer(){
-
+            $('.wrech-products-slider').on('mouseout', function(e){
+                $('.wrech-swipper-prev, .wrech-swipper-next').attr('style','display: none !important');
+            });
         }
 
     }
 
-    window.Kgm = window.Kgm || {};
-    window.Kgm.MapHandler = new MapHandler();
+    window.Wrech = window.Wrech || {};
+    window.Wrech.ModalHandler = new ModalHandler();
 
-    /*$(document).ready(function(){
-        $('body').on('change', '.woocommerce-checkout input', function(){
-            console.log($(this).val())
-            $('body').trigger("update_checkout");
-        })
-    });*/
+    $(document).ready(function(){
+        window.Wrech.ModalHandler.init();
+    });
 
 })(window, window.jQuery);
 

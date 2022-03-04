@@ -6,7 +6,7 @@ jQuery( function( $ ) {
         "newestOnTop": false,
         "progressBar": true,
         "escapeHtml": false,
-        "timeOut": "10000",
+        "timeOut": "5000",
         "positionClass": "toast-bottom-center",
         "preventDuplicates": true,
         "enableHtml": true,
@@ -845,6 +845,12 @@ jQuery( function( $ ) {
                 return true;
             }
 
+            //Redirecting to the product when the product is not simple and is intented to be added from the modal to thecart
+            if($thisbutton.hasClass('wrech_product_no_simple')){
+                window.location = $thisbutton.data('url');
+                return true;
+            }
+
             if($thisbutton.hasClass('single_add_to_cart_button')){
                 if($thisbutton.attr('value')){
                     data['product_id'] = $thisbutton.attr('value');
@@ -862,6 +868,7 @@ jQuery( function( $ ) {
             }
 
             //Check quantity
+            data['quantity'] = 1;
             if($qty = $('.quantity [name="quantity"]')){
                 data['quantity'] = $qty.val();
             }
@@ -911,7 +918,7 @@ jQuery( function( $ ) {
                     $thisbutton.addClass( 'added' );
 ``
                     // Trigger event so themes can refresh other areas.
-                    $( document.body ).trigger( 'added_to_cart', [ response.data.fragments, response.data.cart_hash, $thisbutton ] );
+                    $( document.body ).trigger( 'added_to_cart', [ response.data.fragments, response.data.cart_hash ] );
 
                 },
                 beforeSend: function () {

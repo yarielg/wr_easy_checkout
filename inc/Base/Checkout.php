@@ -25,10 +25,10 @@ class Checkout{
                     $product_id = apply_filters( 'wrech_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
 
                     if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
-                        $product_name      = apply_filters( 'wrech_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key );
-                        $thumbnail         = apply_filters( 'wrech_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
-                        $product_price     = apply_filters( 'wrech_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
-                        $product_permalink = apply_filters( 'wrech_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
+                        $product_name      = $_product->get_name(); //apply_filters( 'wrech_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key );
+                        $thumbnail         = $_product->get_image(); //apply_filters( 'wrech_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+                        $product_price     = WC()->cart->get_product_price( $_product ); //apply_filters( 'wrech_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
+                        $product_permalink = $_product->is_visible() ? $_product->get_permalink( $cart_item ) : ''; //apply_filters( 'wrech_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
                         ?>
                         <li class=" <?php echo esc_attr( apply_filters( 'wrech_mini_cart_item_class', 'wrech_mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
                             <div class="wrech-col wrech-col-2">
@@ -123,29 +123,32 @@ class Checkout{
 					</div>
 				</div>
 
-				<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+				<?php //do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
 			<?php endif; ?>
 
-			<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
+			<?php //do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
-			<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+			<?php //do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
 			<div id="" class="woocommerce-checkout-review-order wrech-step wrech-step-payment">
 				<?php do_action( 'woocommerce_checkout_order_review' ); ?>
 			</div>
 
-			<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
+			<?php //do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
 		</form>
 
-		<?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
-
 		<?php
+        //do_action( 'woocommerce_after_checkout_form', $checkout );
 
 		return ob_get_clean();
 	}
 
+	/**
+	 * @return false|string
+     * Coupon html output
+	 */
 	public static function coupon(){
 
         ob_start();
@@ -156,8 +159,8 @@ class Checkout{
         ?>
         <form id="wrech-coupon-form" class="wrech-coupon-form wrech-checkout_coupon" method="post">
 
-                <input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="wrech-coupon_code" value="" />
-                <button id="wrech-apply-coupon" type="submit" class="button wrech-btn" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
+                <input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon', 'woocommerce' ); ?>" id="wrech-coupon_code" value="" />
+                <button id="wrech-apply-coupon" type="submit" class="button wrech-btn" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply', 'woocommerce' ); ?></button>
 
             <div class="clear"></div>
 
@@ -168,6 +171,10 @@ class Checkout{
 		return ob_get_clean();
     }
 
+	/**
+	 * @return false|string
+     *
+	 */
 	public static function checkout_info_form(){
 
 		$checkout = self::checkout();
@@ -178,7 +185,7 @@ class Checkout{
 		return ob_get_clean();
     }
 
-    public static function login_form(){
+    private static function login_form(){
 	    ob_start();
 	    if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_login_reminder' ) ) {
 		    return;
@@ -204,7 +211,7 @@ class Checkout{
 	    $cart_count = WC()->cart->get_cart_contents_count();
 	    ?>
         <span class="wrech-cart-count"><?php echo $cart_count ?></span>
-        <img class="wrech_cart_icon" style="padding: 8px" src="<?php echo wrech_settings('cart_icon_url') ?>" alt="">
+        <img class="wrech_cart_icon" src="<?php echo wrech_settings('cart_icon_url') ?>" alt="">
         <?php
 
         echo ob_get_clean();

@@ -4,6 +4,10 @@ function wrech_woocommerce_is_active(){
 	return class_exists( 'woocommerce' );
 }
 
+function wrech_woocommerce_stripe_is_activate(){
+	return in_array( 'woocommerce-gateway-stripe/woocommerce-gateway-stripe.php', apply_filters( 'active_plugins', get_option( 'active_plugins' )));
+}
+
 function wrech_settings($field = null){
 
 	$default_settings = array(

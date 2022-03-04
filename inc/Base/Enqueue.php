@@ -29,22 +29,26 @@ class Enqueue{
 	        wp_enqueue_style('main-css', WRECH_PLUGIN_URL . '/assets/css/main.css');
 	       // wp_add_inline_style( 'main-css', array($this, 'dynamic_settings_styles') );
 
-
+            // Third Party js lib
+            //todo: we need to have them locally
 	        wp_enqueue_style('toastr-css', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css');
 	        wp_enqueue_style('select2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
+	        wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper@8/swiper-bundle.min.css');
 
 	        wp_enqueue_script('toastr-js', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js' ,array(),'1.0', true);
-	        wp_enqueue_script('main-js', WRECH_PLUGIN_URL  . '/assets/js/main.js' ,array('jquery'),'1.0', true);
 	        wp_enqueue_script('select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js' ,array(),'1.0', true);
+	        wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper@8/swiper-bundle.min.js' ,array(),'1.0', true);
+
+	        wp_enqueue_script('main-js', WRECH_PLUGIN_URL  . '/assets/js/main.js' ,array('jquery','swiper-js'),'1.0', true);
 
 	        $checkout_js_dependencies = ['jquery','toastr-js','select2-js'];
-	        if(in_array( 'woocommerce-gateway-stripe/woocommerce-gateway-stripe.php', apply_filters( 'active_plugins', get_option( 'active_plugins' )))){
+
+            //Enqueue stripe script only of the stripe plugin is activated
+	        if(wrech_woocommerce_stripe_is_activate()){
 	        	$checkout_js_dependencies[] = 'woocommerce_stripe';
 	        }
 
 	        wp_enqueue_script('checkout-js', WRECH_PLUGIN_URL  . '/assets/js/checkout.js' ,$checkout_js_dependencies,'1.0', true);
-	        //wp_enqueue_script('modal-js', WRECH_PLUGIN_URL  . '/assets/js/modal.js' ,array('jquery','toastr-js','checkout-js'),'1.0', true);
-	        //wp_enqueue_script('checkout-js', plugins_url()  . '/woocommerce/assets/js/frontend/checkout.js' ,array('jquery','checkout-js'),'1.0', false);
 
 	        //Remove checkout.js script to have the total control of checkout ajax call
 	        wp_dequeue_script( 'wc-checkout' );
