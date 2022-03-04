@@ -103,7 +103,7 @@ class ModalFrontend{
                             <div class="wrech-product-wrapper">
                                 <div class="wrech-product-description">
                                     <div class="wrech-product-img">
-                                        <a href="<?php echo $product_id  ?>"><?php echo woocommerce_get_product_thumbnail('woocommerce_thumbnail'); ?></a>
+                                        <a href="<?php echo $product_permalink  ?>"><?php echo woocommerce_get_product_thumbnail('woocommerce_thumbnail'); ?></a>
                                     </div>
                                     <div class="wrech-product-info">
                                         <div  class="wrech-product-name"><a href="<?php echo $product_permalink; ?>"><?php echo $product->get_title() ?></a></div>
