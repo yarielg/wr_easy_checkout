@@ -84,7 +84,7 @@ class ModalFrontend{
 
 	    ob_start();
 	    ?>
-        <p class="wrech-header-label">BEST SELLER</p>
+        <p class="wrech-header-label">BEST SELLERS</p>
 	    <div class="wrech-products-slider">
             <div class="swiper">
                 <!-- Additional required wrapper -->
