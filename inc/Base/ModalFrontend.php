@@ -23,7 +23,7 @@ class ModalFrontend{
         ?>
 
         <!-- Modal -->
-        <div class="woocommerce wrech-modal" style="display: none">
+        <div class="woocommerce wrech-modal">
 
             <!-- Modal Mask -->
             <div class="wrech-mask-container">

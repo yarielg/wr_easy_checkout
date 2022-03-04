@@ -1044,12 +1044,17 @@ jQuery( function( $ ) {
             }
         },
         hide_modal: function() {
-            wrech_modal.$checkout_modal.animate({width: 'toggle'}, {duration: 500})
+            wrech_modal.$checkout_modal.addClass('wrech-left-slide-out');
+            setTimeout(() => {
+                wrech_modal.$checkout_modal.removeClass('wrech-left-slide-in');
+            },1000);
+            //wrech_modal.$checkout_modal.animate({width: 'toggle'}, {duration: 500})
             wrech_modal.$open.show();
         },
         show_modal(){
             wrech_modal.$open.hide();
-            wrech_modal.$checkout_modal.animate({width: 'toggle'}, {duration: 500})
+            wrech_modal.$checkout_modal.addClass('wrech-left-slide-in').removeClass('wrech-left-slide-out');
+            //wrech_modal.$checkout_modal.animate({width: 'toggle'}, {duration: 500})
         },
         initialStepsState(){
             $('.wrech-step').hide();
