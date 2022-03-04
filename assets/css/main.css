@@ -14,14 +14,14 @@
 }
 
 .wrech-left-slide-in{
-    animation: leftSlideIn 1s normal;
-    -webkit-animation: leftSlideIn 1s normal;
+    animation: leftSlideIn 1s;
+    -webkit-animation: leftSlideIn 1s;
     display: block;
 }
 
 .wrech-left-slide-out{
-    animation: leftSlideOut 1s reverse;
-    -webkit-animation: leftSlideOut 1s reverse;
+    animation: leftSlideOut 1s;
+    -webkit-animation: leftSlideOut 1s;
 }
 
 @-webkit-keyframes leftSlideIn {
