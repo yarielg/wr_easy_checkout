@@ -8,13 +8,18 @@ function wrech_woocommerce_stripe_is_activate(){
 	return in_array( 'woocommerce-gateway-stripe/woocommerce-gateway-stripe.php', apply_filters( 'active_plugins', get_option( 'active_plugins' )));
 }
 
+/**
+ * @param null $field
+ *
+ * @return array|mixed
+ * All the config settings
+ */
 function wrech_settings($field = null){
 
 	$default_settings = array(
-		'float_btn_position' => 'bottom_left',
 		'cart_icon_url' => WRECH_PLUGIN_URL . '/assets/images/cart.png',
 		'cart_icon_id' => -1,
-		'excluded_pages' => '',
+		'excluded_pages' => ''
 	);
 
 	$wrech_settings = get_option('wrech_settings', array());
@@ -26,6 +31,20 @@ function wrech_settings($field = null){
 	}
 
 	return $settings;
+}
+
+/**
+ * @return array
+ * All the mod theme settings
+ */
+function wrech_mod_settings(){
+	$wrech_mod_settings = array(
+		'wrech_float_btn_position' => get_theme_mod('wrech_float_btn_position'),
+		'wrech_cart_modal_position' => get_theme_mod('wrech_cart_modal_position'),
+		'wrech_float_btn_bg' => get_theme_mod('wrech_float_btn_bg'),
+		'wrech_float_bubble_bg' => get_theme_mod('wrech_float_bubble_bg'),
+	);
+	return $wrech_mod_settings;
 }
 
 function wrech_save_settings($settings){

@@ -12,7 +12,7 @@ final class Init{
             Base\ModalFrontend::class,
             Base\Pages::class,
             Base\Settings::class,
-
+            Base\Customizer::class,
         ] ;
     }
 

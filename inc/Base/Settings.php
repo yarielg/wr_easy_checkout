@@ -12,11 +12,9 @@ class Settings{
 
     public function register(){
 
-        /**
-         * Override woocommerce template from plugin
-         */
-
 	    //add_action( 'woocommerce_cart_calculate_fees', array($this, 'elex_discount_price') );
+
+	    add_filter( 'kirki/config', array($this, 'kirki_configuration') );
 
 	    add_filter( 'woocommerce_is_checkout', array($this,'is_checkout'),100);
 
@@ -31,6 +29,14 @@ class Settings{
 	    add_filter('woocommerce_loop_add_to_cart_link', array($this,'add_link_event_class_to_loop_add_to_cart'),3,100);
 
     }
+
+	/**
+	 * @return string[]
+	 * Load Kirki config
+	 */
+	function kirki_configuration() {
+		return array( 'url_path'     => WRECH_PLUGIN_PATH . '/inc/kirki/' );
+	}
 
 	/**
 	 * @param $params

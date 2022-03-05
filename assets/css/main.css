@@ -1,10 +1,9 @@
 /*Modal*/
 .wrech-modal{
     position: fixed;
-    top: 0;
-    right: 0;
     background: white;
     width: 420px;
+    top: 0;
     bottom: 0;
     z-index: 100000;
     -webkit-box-shadow: -2px 2px 6px -2px #000000;
@@ -13,39 +12,15 @@
     display:none;
 }
 
-.wrech-left-slide-in{
-    animation: leftSlideIn 1s;
-    -webkit-animation: leftSlideIn 1s;
+.wrech-slide-in{
+    animation: slideIn 1s;
+    -webkit-animation: slideIn 1s;
     display: block;
 }
 
-.wrech-left-slide-out{
-    animation: leftSlideOut 1s;
-    -webkit-animation: leftSlideOut 1s;
-}
-
-@-webkit-keyframes leftSlideIn {
-    0%   {
-        opacity:0;
-        transform: translateX(420px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes leftSlideOut {
-    0%   {
-        opacity:1;
-        transform: translateX(0);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateX(420px);
-    }
+.wrech-slide-out{
+    animation: slideOut 1s;
+    -webkit-animation: slideOut 1s;
 }
 
 .wrech-modal .wrech-main{
@@ -87,7 +62,6 @@
 .wrech-cart-count{
     position: absolute;
     top: -10px;
-    background: black;
     color: wheat;
     height: 25px;
     width: 25px;
@@ -134,7 +108,6 @@
     justify-content: center;
     border-radius: 50%;
     z-index: 99999999;
-    background: white;
 }
 
 .wrech_mini_cart_item{

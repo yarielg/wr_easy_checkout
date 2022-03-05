@@ -11,7 +11,7 @@ Version:      1.0.0
 Author:       Yariel Gordillo from webready
 Author URI:   https://webreadynow.com
 Tested up to: 5.3.2
-Text Domain:  wrech
+Text Domain:  wrech_domain
 Domain Path:  /languages
 */
 
@@ -31,6 +31,9 @@ define('WRECH_PLUGIN_DIR_BASENAME' , dirname(plugin_basename(__FILE__)) );
 
 //include the helpers
 include 'inc/util/helpers.php';
+
+//include kirki framework
+include_once( 'inc/kirki/kirki.php' );
 
 if ( wrech_woocommerce_is_active() ){
 	if( class_exists( 'Wrech\\Inc\\Init' ) ){

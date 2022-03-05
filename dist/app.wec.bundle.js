@@ -28,11 +28,13 @@ var axios = __webpack_require__(/*! axios */ "../node_modules/axios/index.js");
     return {
       loading: false,
       float_btn_position: wrech_settings_params.settings.float_btn_position,
+      cart_modal_position: wrech_settings_params.settings.cart_modal_position,
+      float_btn_bg: wrech_settings_params.settings.float_btn_bg,
+      float_bubble_bg: wrech_settings_params.settings.float_bubble_bg,
       cart_icon: null,
       uploaded_files: [{
         url: wrech_settings_params.settings.cart_icon_url
       }],
-      upload_dirty: false,
       file_data: {
         action: 'wrech_add_cart_icon'
       },
@@ -50,9 +52,6 @@ var axios = __webpack_require__(/*! axios */ "../node_modules/axios/index.js");
   methods: {
     changeScreen: function changeScreen(screen) {
       this.active_screen = screen;
-      console.log(screen);
-    },
-    fileChanged: function fileChanged(file) {// this.$refs.upload.submit();
     },
     handleExceed: function handleExceed(files) {
       this.$refs.upload.clearFiles();
@@ -60,14 +59,12 @@ var axios = __webpack_require__(/*! axios */ "../node_modules/axios/index.js");
       this.$refs.upload.submit();
     },
     iconUploadError: function iconUploadError(err) {
-      console.log(err);
       this.loading = false;
     },
     iconUploading: function iconUploading() {
       this.loading = true;
     },
     iconUploaded: function iconUploaded(response, file, fileList) {
-      console.log(response);
       this.loading = false;
     },
     defaultIcon: function defaultIcon() {
@@ -90,6 +87,9 @@ var axios = __webpack_require__(/*! axios */ "../node_modules/axios/index.js");
       formData.append('action', 'wrech_save_customizations');
       formData.append('float_btn_position', this.float_btn_position);
       formData.append('excluded_pages', this.excluded_pages);
+      formData.append('cart_modal_position', this.cart_modal_position);
+      formData.append('float_btn_bg', this.float_btn_bg);
+      formData.append('float_bubble_bg', this.float_bubble_bg);
       this.loading = true;
       axios.post(wrech_settings_params.ajax_url, formData).then(function (response) {
         if (response.data.success) {
@@ -153,38 +153,31 @@ var _hoisted_4 = {
 
 var _hoisted_5 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("p", {
   "class": "wrech-label"
-}, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("strong", null, "Cart Float Button Position"), /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createTextVNode"])(":")], -1
+}, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("strong", null, "Cart Modal Position"), /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createTextVNode"])(":")], -1
 /* HOISTED */
 );
 
 var _hoisted_6 = ["src"];
 var _hoisted_7 = ["src"];
-var _hoisted_8 = ["src"];
+
+var _hoisted_8 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("p", {
+  "class": "wrech-label"
+}, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("strong", null, "Cart Float Button Position"), /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createTextVNode"])(":")], -1
+/* HOISTED */
+);
+
 var _hoisted_9 = ["src"];
+var _hoisted_10 = ["src"];
+var _hoisted_11 = ["src"];
+var _hoisted_12 = ["src"];
 
-var _hoisted_10 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("br", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_11 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("p", {
-  "class": "wrech-label"
-}, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("strong", null, "Cart Icon:")], -1
-/* HOISTED */
-);
-
-var _hoisted_12 = {
-  "class": "settings"
-};
-
-var _hoisted_13 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("p", {
-  "class": "wrech-label"
-}, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("strong", null, "Excluded Pages:")], -1
+var _hoisted_13 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("br", null, null, -1
 /* HOISTED */
 );
 
 var _hoisted_14 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("p", {
-  "class": "wrech-field-description mt-3"
-}, "List pages where the cart modal won't show, Cart and checkout page are excluded.", -1
+  "class": "wrech-label"
+}, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("strong", null, "Cart Float Button Background:")], -1
 /* HOISTED */
 );
 
@@ -192,7 +185,43 @@ var _hoisted_15 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createEl
 /* HOISTED */
 );
 
-var _hoisted_16 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createTextVNode"])("Save Settings ");
+var _hoisted_16 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("p", {
+  "class": "wrech-label"
+}, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("strong", null, "Cart Float Bubble Background:")], -1
+/* HOISTED */
+);
+
+var _hoisted_17 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_18 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("p", {
+  "class": "wrech-label"
+}, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("strong", null, "Cart Icon:")], -1
+/* HOISTED */
+);
+
+var _hoisted_19 = {
+  "class": "settings"
+};
+
+var _hoisted_20 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("p", {
+  "class": "wrech-label"
+}, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("strong", null, "Excluded Pages:")], -1
+/* HOISTED */
+);
+
+var _hoisted_21 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("p", {
+  "class": "wrech-field-description mt-3"
+}, "List pages where the cart modal won't show, Cart and checkout page are excluded.", -1
+/* HOISTED */
+);
+
+var _hoisted_22 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_23 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createTextVNode"])("Save Settings ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_shopping_cart = Object(vue__WEBPACK_IMPORTED_MODULE_0__["resolveComponent"])("shopping-cart");
@@ -214,6 +243,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_radio_group = Object(vue__WEBPACK_IMPORTED_MODULE_0__["resolveComponent"])("el-radio-group");
 
   var _component_el_form_item = Object(vue__WEBPACK_IMPORTED_MODULE_0__["resolveComponent"])("el-form-item");
+
+  var _component_el_color_picker = Object(vue__WEBPACK_IMPORTED_MODULE_0__["resolveComponent"])("el-color-picker");
 
   var _component_plus = Object(vue__WEBPACK_IMPORTED_MODULE_0__["resolveComponent"])("plus");
 
@@ -326,20 +357,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["withDirectives"])(Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("div", _hoisted_4, [_hoisted_5, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_form_item, null, {
                 "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
                   return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_radio_group, {
-                    modelValue: $data.float_btn_position,
+                    modelValue: $data.cart_modal_position,
                     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-                      return $data.float_btn_position = $event;
+                      return $data.cart_modal_position = $event;
                     })
                   }, {
                     "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
                       return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_radio_button, {
                         "class": "btn_position",
-                        label: "bottom_left"
+                        label: "modal_left"
                       }, {
                         "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
                           return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("img", {
                             "class": "position_image",
-                            src: $data.plugin_url + '/assets/images/bottom_left.png',
+                            src: $data.plugin_url + '/assets/images/modal_left.png',
                             alt: ""
                           }, null, 8
                           /* PROPS */
@@ -350,48 +381,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
                       }), Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_radio_button, {
                         "class": "btn_position",
-                        label: "bottom_right"
+                        label: "modal_right"
                       }, {
                         "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
                           return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("img", {
                             "class": "position_image",
-                            src: $data.plugin_url + '/assets/images/bottom_right.png',
+                            src: $data.plugin_url + '/assets/images/modal_right.png',
                             alt: ""
                           }, null, 8
                           /* PROPS */
                           , _hoisted_7)];
-                        }),
-                        _: 1
-                        /* STABLE */
-
-                      }), Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_radio_button, {
-                        "class": "btn_position",
-                        label: "up_right"
-                      }, {
-                        "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
-                          return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("img", {
-                            "class": "position_image",
-                            src: $data.plugin_url + '/assets/images/up_right.png',
-                            alt: ""
-                          }, null, 8
-                          /* PROPS */
-                          , _hoisted_8)];
-                        }),
-                        _: 1
-                        /* STABLE */
-
-                      }), Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_radio_button, {
-                        "class": "btn_position",
-                        label: "up_left"
-                      }, {
-                        "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
-                          return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("img", {
-                            "class": "position_image",
-                            src: $data.plugin_url + '/assets/images/up_left.png',
-                            alt: ""
-                          }, null, 8
-                          /* PROPS */
-                          , _hoisted_9)];
                         }),
                         _: 1
                         /* STABLE */
@@ -408,7 +407,122 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 _: 1
                 /* STABLE */
 
-              }), _hoisted_10, _hoisted_11, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_upload, {
+              }), _hoisted_8, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_form_item, null, {
+                "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
+                  return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_radio_group, {
+                    modelValue: $data.float_btn_position,
+                    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+                      return $data.float_btn_position = $event;
+                    })
+                  }, {
+                    "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
+                      return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_radio_button, {
+                        "class": "btn_position",
+                        label: "bottom_left"
+                      }, {
+                        "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
+                          return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("img", {
+                            "class": "position_image",
+                            src: $data.plugin_url + '/assets/images/bottom_left.png',
+                            alt: ""
+                          }, null, 8
+                          /* PROPS */
+                          , _hoisted_9)];
+                        }),
+                        _: 1
+                        /* STABLE */
+
+                      }), Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_radio_button, {
+                        "class": "btn_position",
+                        label: "bottom_right"
+                      }, {
+                        "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
+                          return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("img", {
+                            "class": "position_image",
+                            src: $data.plugin_url + '/assets/images/bottom_right.png',
+                            alt: ""
+                          }, null, 8
+                          /* PROPS */
+                          , _hoisted_10)];
+                        }),
+                        _: 1
+                        /* STABLE */
+
+                      }), Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_radio_button, {
+                        "class": "btn_position",
+                        label: "up_right"
+                      }, {
+                        "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
+                          return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("img", {
+                            "class": "position_image",
+                            src: $data.plugin_url + '/assets/images/up_right.png',
+                            alt: ""
+                          }, null, 8
+                          /* PROPS */
+                          , _hoisted_11)];
+                        }),
+                        _: 1
+                        /* STABLE */
+
+                      }), Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_radio_button, {
+                        "class": "btn_position",
+                        label: "up_left"
+                      }, {
+                        "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
+                          return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("img", {
+                            "class": "position_image",
+                            src: $data.plugin_url + '/assets/images/up_left.png',
+                            alt: ""
+                          }, null, 8
+                          /* PROPS */
+                          , _hoisted_12)];
+                        }),
+                        _: 1
+                        /* STABLE */
+
+                      })];
+                    }),
+                    _: 1
+                    /* STABLE */
+
+                  }, 8
+                  /* PROPS */
+                  , ["modelValue"])];
+                }),
+                _: 1
+                /* STABLE */
+
+              }), _hoisted_13, _hoisted_14, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_form_item, null, {
+                "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
+                  return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_color_picker, {
+                    modelValue: $data.float_btn_bg,
+                    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+                      return $data.float_btn_bg = $event;
+                    }),
+                    size: "large"
+                  }, null, 8
+                  /* PROPS */
+                  , ["modelValue"])];
+                }),
+                _: 1
+                /* STABLE */
+
+              }), _hoisted_15, _hoisted_16, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_form_item, null, {
+                "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
+                  return [Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_color_picker, {
+                    modelValue: $data.float_bubble_bg,
+                    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+                      return $data.float_bubble_bg = $event;
+                    }),
+                    size: "large"
+                  }, null, 8
+                  /* PROPS */
+                  , ["modelValue"])];
+                }),
+                _: 1
+                /* STABLE */
+
+              }), _hoisted_17, _hoisted_18, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_upload, {
                 ref: "upload",
                 action: $data.ajax_url,
                 data: $data.file_data,
@@ -420,7 +534,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 "on-success": $options.iconUploaded,
                 "on-progress": $options.iconUploading,
                 "on-error": $options.iconUploadError,
-                "on-change": $options.fileChanged,
+                "on-change": _ctx.fileChanged,
                 "on-remove": $options.defaultIcon,
                 "class": "wrech_single_uploader"
               }, {
@@ -441,9 +555,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               /* PROPS */
               , ["action", "data", "file-list", "on-exceed", "on-success", "on-progress", "on-error", "on-change", "on-remove"])], 512
               /* NEED_PATCH */
-              ), [[vue__WEBPACK_IMPORTED_MODULE_0__["vShow"], $data.active_screen === 'cart']]), Object(vue__WEBPACK_IMPORTED_MODULE_0__["withDirectives"])(Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("div", _hoisted_12, [_hoisted_13, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_select, {
+              ), [[vue__WEBPACK_IMPORTED_MODULE_0__["vShow"], $data.active_screen === 'cart']]), Object(vue__WEBPACK_IMPORTED_MODULE_0__["withDirectives"])(Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("div", _hoisted_19, [_hoisted_20, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_select, {
                 modelValue: $data.excluded_pages,
-                "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+                "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
                   return $data.excluded_pages = $event;
                 }),
                 multiple: "",
@@ -469,17 +583,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
               }, 8
               /* PROPS */
-              , ["modelValue"]), _hoisted_14], 512
+              , ["modelValue"]), _hoisted_21], 512
               /* NEED_PATCH */
-              ), [[vue__WEBPACK_IMPORTED_MODULE_0__["vShow"], $data.active_screen === 'settings']]), _hoisted_15, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_button, {
+              ), [[vue__WEBPACK_IMPORTED_MODULE_0__["vShow"], $data.active_screen === 'settings']]), _hoisted_22, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_button, {
                 type: "primary",
-                onClick: _cache[4] || (_cache[4] = function ($event) {
+                onClick: _cache[7] || (_cache[7] = function ($event) {
                   return $options.saveCustomization();
                 }),
                 round: ""
               }, {
                 "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {
-                  return [_hoisted_16, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_icon, {
+                  return [_hoisted_23, Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_el_icon, {
                     "class": "el-icon--right"
                   }, {
                     "default": Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(function () {

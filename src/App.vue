@@ -43,6 +43,15 @@
       <el-col :span="18" class="main-area">
 
        <div class="cart" v-show="active_screen === 'cart'">
+
+         <p class="wrech-label"><strong>Cart Modal Position</strong>:</p>
+         <el-form-item>
+           <el-radio-group v-model="cart_modal_position">
+             <el-radio-button class="btn_position" label="modal_left" ><img class="position_image" :src="plugin_url + '/assets/images/modal_left.png'" alt=""></el-radio-button>
+             <el-radio-button class="btn_position" label="modal_right" ><img class="position_image" :src="plugin_url + '/assets/images/modal_right.png'" alt=""></el-radio-button>
+           </el-radio-group>
+         </el-form-item>
+
          <p class="wrech-label"><strong>Cart Float Button Position</strong>:</p>
          <el-form-item>
            <el-radio-group v-model="float_btn_position">
@@ -51,6 +60,18 @@
              <el-radio-button class="btn_position" label="up_right" ><img class="position_image" :src="plugin_url + '/assets/images/up_right.png'" alt=""></el-radio-button>
              <el-radio-button class="btn_position" label="up_left"><img class="position_image" :src="plugin_url + '/assets/images/up_left.png'" alt=""></el-radio-button>
            </el-radio-group>
+         </el-form-item>
+
+         <br>
+         <p class="wrech-label"><strong>Cart Float Button Background:</strong></p>
+         <el-form-item>
+           <el-color-picker v-model="float_btn_bg" size="large" />
+         </el-form-item>
+
+         <br>
+         <p class="wrech-label"><strong>Cart Float Bubble Background:</strong></p>
+         <el-form-item>
+           <el-color-picker v-model="float_bubble_bg" size="large" />
          </el-form-item>
 
          <br>
@@ -73,6 +94,7 @@
          >
            <el-icon><plus /></el-icon>
          </el-upload>
+
        </div>
         <div class="settings" v-show="active_screen === 'settings'">
           <p class="wrech-label"><strong>Excluded Pages:</strong></p>
@@ -109,11 +131,13 @@
       return {
         loading: false,
         float_btn_position: wrech_settings_params.settings.float_btn_position,
+        cart_modal_position: wrech_settings_params.settings.cart_modal_position,
+        float_btn_bg: wrech_settings_params.settings.float_btn_bg,
+        float_bubble_bg: wrech_settings_params.settings.float_bubble_bg,
         cart_icon: null,
         uploaded_files: [{
           url: wrech_settings_params.settings.cart_icon_url
         }],
-        upload_dirty: false,
         file_data: {
           action: 'wrech_add_cart_icon'
         },
@@ -121,7 +145,7 @@
         ajax_url: wrech_settings_params.ajax_url,
         active_screen: 'cart',
         pages: [],
-        excluded_pages: []
+        excluded_pages: [],
       }
     },
     computed:{
@@ -133,10 +157,6 @@
     methods:{
       changeScreen(screen){
         this.active_screen = screen;
-        console.log(screen)
-      },
-      fileChanged(file){
-        // this.$refs.upload.submit();
       },
       handleExceed(files){
         this.$refs.upload.clearFiles()
@@ -144,14 +164,12 @@
         this.$refs.upload.submit()
       },
       iconUploadError(err){
-        console.log(err);
         this.loading = false;
       },
       iconUploading(){
         this.loading = true;
       },
       iconUploaded(response,file, fileList){
-        console.log(response)
         this.loading = false;
       },
       defaultIcon(){
@@ -174,6 +192,9 @@
         formData.append('action', 'wrech_save_customizations');
         formData.append('float_btn_position', this.float_btn_position);
         formData.append('excluded_pages', this.excluded_pages);
+        formData.append('cart_modal_position', this.cart_modal_position);
+        formData.append('float_btn_bg', this.float_btn_bg);
+        formData.append('float_bubble_bg', this.float_bubble_bg);
 
         this.loading = true;
         axios.post(wrech_settings_params.ajax_url, formData)

@@ -72,27 +72,97 @@ class Enqueue{
     }
 
 	function dynamic_settings_styles(){
-		$settings = wrech_settings();
+		$mod_settings = wrech_mod_settings();
+
 		?>
 		<style wrech_styles>
+            /* Cart float button position */
 			.wrech-float-btn{
-				<?php if($settings['float_btn_position'] === 'bottom_left'){ ?>
+				<?php if($mod_settings['wrech_float_btn_position'] === 'bottom_left'){ ?>
 					bottom: 30px;
 					left: 30px;
 				<?php }
-				if($settings['float_btn_position'] === 'bottom_right'){ ?>
+				else if($mod_settings['wrech_float_btn_position'] === 'bottom_right'){ ?>
 					bottom: 30px;
 					right: 30px;
 				<?php }
-				if($settings['float_btn_position'] === 'up_right'){ ?>
+				else if($mod_settings['wrech_float_btn_position'] === 'up_right'){ ?>
 				top: 30px;
 				right: 30px;
 			<?php }
-			if($settings['float_btn_position'] === 'up_left'){ ?>
+			else if($mod_settings['wrech_float_btn_position'] === 'up_left'){ ?>
 				top: 30px;
 				left: 30px;
 			<?php } ?>
 			}
+
+            /* Modal Position */
+
+            <?php if($mod_settings['wrech_cart_modal_position'] == 'modal_right'){ ?>
+            .wrech-modal{
+                right: 0;
+            }
+            @-webkit-keyframes slideIn {
+                0%   {
+                    opacity:0;
+                    transform: translateX(420px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            @keyframes slideOut {
+                0%   {
+                    opacity:1;
+                    transform: translateX(0);
+                }
+
+                100% {
+                    opacity: 0;
+                    transform: translateX(420px);
+                }
+            }
+            <?php }
+            else {  ?>
+            .wrech-modal{
+                left: 0;
+            }
+            @-webkit-keyframes slideIn {
+                0%   {
+                    opacity:0;
+                    transform: translateX(-420px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            @keyframes slideOut {
+                0%   {
+                    opacity:1;
+                    transform: translateX(0);
+                }
+
+                100% {
+                    opacity: 0;
+                    transform: translateX(-420px);
+                }
+            }
+            <?php } ?>
+
+            /* Float Btn Background */
+            .wrech-float-btn{
+                background: <?php echo $mod_settings['wrech_float_btn_bg'] ?>;
+            }
+            .wrech-cart-count{
+                background: <?php echo $mod_settings['wrech_float_bubble_bg'] ?>;
+            }
+
 		</style>
 		<?php
 	}
