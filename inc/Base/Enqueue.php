@@ -71,118 +71,53 @@ class Enqueue{
         }
     }
 
+	/**
+	 * Remaining styles theme mod wich can be inserted bi kirki css module
+	 */
 	function dynamic_settings_styles(){
 		$mod_settings = wrech_mod_settings();
-
 		?>
 		<style wrech_styles>
             /* Cart float button position */
 			.wrech-float-btn{
 				<?php if($mod_settings['wrech_float_btn_position'] === 'bottom_left'){ ?>
-					bottom: 30px;
-					left: 30px;
+					bottom: 30px;left: 30px;
 				<?php }
 				else if($mod_settings['wrech_float_btn_position'] === 'bottom_right'){ ?>
-					bottom: 30px;
-					right: 30px;
+					bottom: 30px;right: 30px;
 				<?php }
 				else if($mod_settings['wrech_float_btn_position'] === 'up_right'){ ?>
-				top: 30px;
-				right: 30px;
+				top: 30px;right: 30px;
 			<?php }
 			else if($mod_settings['wrech_float_btn_position'] === 'up_left'){ ?>
-				top: 30px;
-				left: 30px;
+				top: 30px;left: 30px;
 			<?php } ?>
 			}
 
             /* Modal Position */
-
             <?php if($mod_settings['wrech_cart_modal_position'] == 'modal_right'){ ?>
-            .wrech-modal{
-                right: 0;
-            }
+            .wrech-modal{ right: 0; }
             @-webkit-keyframes slideIn {
-                0%   {
-                    opacity:0;
-                    transform: translateX(420px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
+                0%   { opacity:0;transform: translateX(420px); }
+                100% { opacity: 1;transform: translateX(0); }
             }
             @keyframes slideOut {
-                0%   {
-                    opacity:1;
-                    transform: translateX(0);
-                }
-                100% {
-                    opacity: 0;
-                    transform: translateX(420px);
-                }
+                0%   { opacity:1;transform: translateX(0); }
+                100% { opacity: 0;transform: translateX(420px); }
             }
             <?php }
             else {  ?>
-            .wrech-modal{
-                left: 0;
-                direction:ltr;
-            }
+            .wrech-modal{ left: 0; }
             @-webkit-keyframes slideIn {
-                0%   {
-                    opacity:0;
-                    transform: translateX(-420px);
-                }
-
-                100% {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
+                0%   { opacity:0;transform: translateX(-420px); }
+                100% {opacity: 1;transform: translateX(0); }
             }
 
             @keyframes slideOut {
-                0%   {
-                    opacity:1;
-                    transform: translateX(0);
-                }
-
-                100% {
-                    opacity: 0;
-                    transform: translateX(-420px);
-                }
+                0%   { opacity:1;transform: translateX(0); }
+                100% { opacity: 0; transform: translateX(-420px); }
             }
             <?php } ?>
-
-            /* Float Btn Background */
-            .wrech-float-btn{
-                background: <?php echo $mod_settings['wrech_float_btn_bg'] ?>;
-            }
-            .wrech-cart-count{
-                background: <?php echo $mod_settings['wrech_float_bubble_bg'] ?>;
-            }
-            .wrech-header-modal{
-                background: <?php echo $mod_settings['wrech_header_bg'] ?>;
-            }
-            .wrech-modal-cart-heading p{
-                color: <?php echo $mod_settings['wrech_header_heading_color'] ?>;
-            }
-            #wrech-coupon_code{
-                border-radius: <?php echo $mod_settings['wrech_coupon_input_radius'] ?>px;
-            }
-            #wrech-apply-coupon{
-                border-radius: <?php echo $mod_settings['wrech_coupon_button_radius'] ?>px;
-            }
-            .wrech_remove_item_img{
-                background-color: <?php echo $mod_settings['wrech_cart_item_close_icon_color'] ?>;
-                mask: url('<?php echo $mod_settings['wrech_cart_item_close_icon_color'] ?>') no-repeat center / contain;
-                -webkit-mask: url('<?php echo WRECH_PLUGIN_URL . '/assets/images/' . $mod_settings['wrech_cart_item_close_icon'] ?>.png') no-repeat center / contain;
-            }
-            /* Cart Items */
-            .wrech-close-modal{
-                background-color: <?php echo $mod_settings['wrech_header_close_icon_color'] ?>;
-                mask: url('<?php echo $mod_settings['wrech_cart_header_close_icon'] ?>.png') no-repeat center / contain;
-                -webkit-mask: url('<?php echo WRECH_PLUGIN_URL . '/assets/images/' . $mod_settings['wrech_cart_header_close_icon'] ?>.png') no-repeat center / contain;
-            }
 		</style>
 		<?php
 	}

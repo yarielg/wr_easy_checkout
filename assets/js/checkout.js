@@ -1018,6 +1018,7 @@ jQuery( function( $ ) {
             //wc_checkout_form.$checkout_form.removeClass('woocommerce-checkout');
             wrech_modal.initialStepsState();
             wrech_modal.$step_cart.show();
+            $(this).addClass('wrech-active');
 
         },
         check_empty_cart(){
@@ -1034,6 +1035,7 @@ jQuery( function( $ ) {
             if(!wrech_modal.check_empty_cart()){
                 wrech_modal.initialStepsState();
                 wrech_modal.$step_info.show();
+                $(this).addClass('wrech-active');
             }
         },
         show_payment(){
@@ -1041,6 +1043,7 @@ jQuery( function( $ ) {
             if(!wrech_modal.check_empty_cart()){
                 wrech_modal.initialStepsState();
                 wrech_modal.$step_payment.show();
+                $(this).addClass('wrech-active');
             }
         },
         hide_modal: function() {
@@ -1058,6 +1061,9 @@ jQuery( function( $ ) {
         },
         initialStepsState(){
             $('.wrech-step').hide();
+            wrech_modal.$payment_btn.removeClass('wrech-active');
+            wrech_modal.$car_btn.removeClass('wrech-active');
+            wrech_modal.$order_info_btn.removeClass('wrech-active');
         },
         check_info_form(){
 

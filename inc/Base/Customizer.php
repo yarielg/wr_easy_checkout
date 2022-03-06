@@ -76,6 +76,12 @@ class Customizer{
 			'description' => esc_html__( 'Set the header cart heading', 'wrech_domain' ),
 			'section'  => 'wrech_cart_modal_header',
 			'default'     => '#000000',
+			'output'      => array(
+				array(
+					'element' => '.wrech-modal-cart-heading p',
+					'property'=> 'color'
+				)
+			)
 		);
 
 		$fields[] = array(
@@ -85,6 +91,12 @@ class Customizer{
 			'description' => esc_html__( 'Set the cart header background', 'wrech_domain' ),
 			'section'     => 'wrech_cart_modal_header',
 			'default'     => '#FFFFFF',
+			'output'      => array(
+				array(
+					'element' => '.wrech-header-modal',
+					'property'=> 'background'
+				)
+			)
 		);
 
 		$fields[] = array(
@@ -98,6 +110,13 @@ class Customizer{
 				'max'  => 20,
 				'step' => 1,
 			],
+			'output'      => array(
+				array(
+					'element' => '#wrech-coupon_code',
+					'property'=> 'border-radius',
+					'units' => 'px'
+				)
+			)
 		);
 
 		$fields[] = array(
@@ -111,6 +130,13 @@ class Customizer{
 				'max'  => 20,
 				'step' => 1,
 			],
+			'output'      => array(
+				array(
+					'element' => '#wrech-apply-coupon',
+					'property'=> 'border-radius',
+					'units' => 'px'
+				)
+			)
 		);
 
 		$fields[] = array(
@@ -126,7 +152,19 @@ class Customizer{
 				'close_icon_4'  => WRECH_PLUGIN_URL . '/assets/images/close_icon_4.png',
 				'close_icon_5'  => WRECH_PLUGIN_URL . '/assets/images/close_icon_5.png',
 				'close_icon_6'  => WRECH_PLUGIN_URL . '/assets/images/close_icon_6.png',
-			]
+			],
+			'output'      => array(
+				array(
+					'element' => '.wrech-close-modal',
+					'property'=> 'mask',
+					'value_pattern' => 'url("'. WRECH_PLUGIN_URL . '/assets/images/$.png") no-repeat center / contain'
+				),
+				array(
+					'element' => '.wrech-close-modal',
+					'property'=> '-webkit-mask',
+					'value_pattern' => 'url("'. WRECH_PLUGIN_URL . '/assets/images/$.png") no-repeat center / contain'
+				)
+			)
 		);
 
 		$fields[] = array(
@@ -136,6 +174,12 @@ class Customizer{
 			'description' => esc_html__( 'Set the cart header icon close color', 'wrech_domain' ),
 			'section'     => 'wrech_cart_modal_header',
 			'default'     => '#000000',
+			'output'      => array(
+				array(
+					'element' => '.wrech-close-modal',
+					'property'=> 'background-color'
+				)
+			)
 		);
 
 		/* CART FLOAT BTN  */
@@ -143,18 +187,30 @@ class Customizer{
 			'type' => 'color',
 			'settings'    => 'wrech_float_btn_bg',
 			'label'       => __( 'Cart Float Background', 'wrech_domain' ),
-			'description' => esc_html__( 'Regular color control, no alpha channel.', 'wrech_domain' ),
+			'description' => esc_html__( 'Set the cart float button background.', 'wrech_domain' ),
 			'section'     => 'wrech_cart_float',
 			'default'     => '#FFFFFF',
+			'output'      => array(
+				array(
+					'element' => '.wrech-float-btn',
+					'property'=> 'background'
+				)
+			)
 		);
 
 		$fields[] = array(
 			'type' => 'color',
 			'settings'    => 'wrech_float_bubble_bg',
 			'label'       => __( 'Cart Float Bubble Background', 'wrech_domain' ),
-			'description' => esc_html__( 'Regular color control, no alpha channel.', 'wrech_domain' ),
+			'description' => esc_html__( 'Set the Cart Float Bubble Background.', 'wrech_domain' ),
 			'section'     => 'wrech_cart_float',
 			'default'     => '#000000',
+			'output'      => array(
+				array(
+					'element' => '.wrech-cart-count',
+					'property'=> 'background'
+				)
+			)
 		);
 
 		$fields[] = array(
@@ -200,7 +256,19 @@ class Customizer{
 				'close_icon_4'  => WRECH_PLUGIN_URL . '/assets/images/close_icon_4.png',
 				'close_icon_5'  => WRECH_PLUGIN_URL . '/assets/images/close_icon_5.png',
 				'close_icon_6'  => WRECH_PLUGIN_URL . '/assets/images/close_icon_6.png',
-			]
+			],
+			'output'      => array(
+				array(
+					'element' => '.wrech_remove_item_img',
+					'property'=> 'mask',
+					'value_pattern' => 'url("'. WRECH_PLUGIN_URL . '/assets/images/$.png") no-repeat center / contain'
+				),
+				array(
+					'element' => '.wrech_remove_item_img',
+					'property'=> '-webkit-mask',
+					'value_pattern' => 'url("'. WRECH_PLUGIN_URL . '/assets/images/$.png") no-repeat center / contain'
+				)
+			)
 		);
 
 		$fields[] = array(
@@ -210,6 +278,12 @@ class Customizer{
 			'description' => esc_html__( 'Set the cart header icon close color', 'wrech_domain' ),
 			'section'     => 'wrech_cart_item_modal',
 			'default'     => '#000000',
+			'output'      => array(
+				array(
+					'element' => '.wrech_remove_item_img',
+					'property'=> 'background'
+				)
+			)
 		);
 
 		return $fields;

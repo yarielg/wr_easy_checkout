@@ -57,7 +57,7 @@ class ModalFrontend{
                 <!--todo add the translation here -->
                 <div class="wrech-actions">
                     <button class="wrech-cart-btn wrech-btn">Cart</button>
-                    <button class="wrech-order-info-btn wrech-btn">Order Info</button>
+                    <button class="wrech-order-info-btn wrech-btn">Shipping & Billing</button>
                     <button class="wrech-payment-btn wrech-btn">Payment</button>
                 </div>
 

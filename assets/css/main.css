@@ -276,17 +276,26 @@
 }
 
 .wrech-actions{
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 3px;
+}
+
+.wrech-cart-btn{
+    padding: 0;
+    margin: 0;
+}
+
+.wrech-active{
+    background: green !important;
 }
 
 .wrech-btn{
-    height: 40px;
-    font-size: 15px;
+    height: 35px;
+    font-size: 14px;
     line-height: normal;
-    width: 30%; /*This need to be changed*/
-    padding: 1px;
     color:white !important;
-    background: black !important;
+    background: black;
 }
 
 .wrech-checkout input[type='text'],
