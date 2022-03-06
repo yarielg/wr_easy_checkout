@@ -40,22 +40,21 @@ function wrech_settings($field = null){
 function wrech_mod_settings(){
 	$wrech_mod_settings = array(
 		//Float Btn
-		'wrech_float_btn_position' => get_theme_mod('wrech_float_btn_position'),
-		'wrech_cart_modal_position' => get_theme_mod('wrech_cart_modal_position'),
-		'wrech_float_btn_bg' => get_theme_mod('wrech_float_btn_bg'),
-		'wrech_float_bubble_bg' => get_theme_mod('wrech_float_bubble_bg'),
+		'wrech_float_btn_position' => get_theme_mod('wrech_float_btn_position','bottom_left'),
+		'wrech_cart_modal_position' => get_theme_mod('wrech_cart_modal_position','modal_right'),
+		'wrech_float_btn_bg' => get_theme_mod('wrech_float_btn_bg','#FFFFFF'),
+		'wrech_float_bubble_bg' => get_theme_mod('wrech_float_bubble_bg','#000000'),
 		//Cart Header
-		'wrech_header_heading' => get_theme_mod('wrech_header_heading'),
-		'wrech_cart_modal_header' => get_theme_mod('wrech_cart_modal_header'),
-		'wrech_header_bg' => get_theme_mod('wrech_header_bg'),
-		'wrech_header_heading_color' => get_theme_mod('wrech_header_heading_color'),
-		'wrech_coupon_input_radius' => get_theme_mod('wrech_coupon_input_radius'),
-		'wrech_coupon_button_radius' => get_theme_mod('wrech_coupon_button_radius'),
-		'wrech_cart_header_close_icon' => get_theme_mod('wrech_cart_header_close_icon'),
-		'wrech_header_close_icon_color' => get_theme_mod('wrech_header_close_icon_color'),
+		'wrech_header_heading' => get_theme_mod('wrech_header_heading','YOUR CART'),
+		'wrech_header_bg' => get_theme_mod('wrech_header_bg','#FFFFFF'),
+		'wrech_header_heading_color' => get_theme_mod('wrech_header_heading_color','#000000'),
+		'wrech_coupon_input_radius' => get_theme_mod('wrech_coupon_input_radius',0),
+		'wrech_coupon_button_radius' => get_theme_mod('wrech_coupon_button_radius',0),
+		'wrech_cart_header_close_icon' => get_theme_mod('wrech_cart_header_close_icon','close_icon_1'),
+		'wrech_header_close_icon_color' => get_theme_mod('wrech_header_close_icon_color'.'#000000'),
 		//Cart Items
-		'wrech_cart_item_close_icon_color' => get_theme_mod('wrech_cart_item_close_icon_color'),
-		'wrech_cart_item_close_icon' => get_theme_mod('wrech_cart_item_close_icon'),
+		'wrech_cart_item_close_icon_color' => get_theme_mod('wrech_cart_item_close_icon_color','#000000'),
+		'wrech_cart_item_close_icon' => get_theme_mod('wrech_cart_item_close_icon','close_icon_1'),
 
 	);
 	return $wrech_mod_settings;

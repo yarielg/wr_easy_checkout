@@ -178,7 +178,7 @@ class Customizer{
 			'settings'    => 'wrech_cart_modal_position',
 			'label'       => esc_html__( 'Cart Modal Position', 'wrech_domain' ),
 			'section'     => 'wrech_cart_modal',
-			'default'     => 'modal_right',
+				'default'     => 'modal_right',
 			'priority'    => 10,
 			'choices'     => [
 				'modal_left' => WRECH_PLUGIN_URL . '/assets/images/modal_left.png',
