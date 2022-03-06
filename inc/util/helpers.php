@@ -51,7 +51,7 @@ function wrech_mod_settings(){
 		'wrech_coupon_input_radius' => get_theme_mod('wrech_coupon_input_radius',0),
 		'wrech_coupon_button_radius' => get_theme_mod('wrech_coupon_button_radius',0),
 		'wrech_cart_header_close_icon' => get_theme_mod('wrech_cart_header_close_icon','close_icon_1'),
-		'wrech_header_close_icon_color' => get_theme_mod('wrech_header_close_icon_color'.'#000000'),
+		'wrech_header_close_icon_color' => get_theme_mod('wrech_header_close_icon_color','#000000'),
 		//Cart Items
 		'wrech_cart_item_close_icon_color' => get_theme_mod('wrech_cart_item_close_icon_color','#000000'),
 		'wrech_cart_item_close_icon' => get_theme_mod('wrech_cart_item_close_icon','close_icon_1'),
