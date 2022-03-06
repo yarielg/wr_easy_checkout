@@ -46,7 +46,7 @@
            <el-icon><plus /></el-icon>
          </el-upload>
 
-         <p class="wrech-label"><strong>Design: </strong> <a target="_blank" href="/wp-admin/customize.php?autofocus%5Bpanel%5D=2Fwrech_mod_main">Go to Customizer</a></p>
+         <p class="wrech-label"><strong>Design: </strong> <a target="_blank" href="/wp-admin/customize.php?autofocus%5Bpanel%5D=wrech_mod_main">Go to Customizer</a></p>
 
        </div>
         <div class="settings" v-show="active_screen === 'settings'">

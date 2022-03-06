@@ -153,7 +153,7 @@ var _hoisted_6 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createEle
   "class": "wrech-label"
 }, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("strong", null, "Design: "), /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createTextVNode"])(), /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__["createElementVNode"])("a", {
   target: "_blank",
-  href: "/wp-admin/customize.php?autofocus%5Bpanel%5D=2Fwrech_mod_main"
+  href: "/wp-admin/customize.php?autofocus%5Bpanel%5D=wrech_mod_main"
 }, "Go to Customizer")], -1
 /* HOISTED */
 );
