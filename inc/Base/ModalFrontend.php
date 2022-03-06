@@ -18,7 +18,7 @@ class ModalFrontend{
     }
 
     function modal(){
-
+        $mod_settings = wrech_mod_settings();
         if(!Checkout::is_checkout()){
         ?>
 
@@ -33,8 +33,10 @@ class ModalFrontend{
 
             <!-- Modal Header -->
             <div class="wrech-header-modal">
+                <div class="wrech-modal-cart-heading">
+                    <p><?php echo $mod_settings['wrech_header_heading'] ?></p>
+                </div>
                 <?php echo Checkout::coupon() ?>
-                <img class="wrech-close-modal" src="<?php echo WRECH_PLUGIN_URL . '/assets/images/close.png' ?>" alt="">
             </div>
 
             <!-- Modal Content -->

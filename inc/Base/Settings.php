@@ -14,6 +14,8 @@ class Settings{
 
 	    //add_action( 'woocommerce_cart_calculate_fees', array($this, 'elex_discount_price') );
 
+	    add_action( 'customize_preview_init', array($this, 'customizer_load') );
+
 	    add_filter( 'kirki/config', array($this, 'kirki_configuration') );
 
 	    add_filter( 'woocommerce_is_checkout', array($this,'is_checkout'),100);
@@ -28,6 +30,28 @@ class Settings{
 
 	    add_filter('woocommerce_loop_add_to_cart_link', array($this,'add_link_event_class_to_loop_add_to_cart'),3,100);
 
+    }
+
+	/**
+	 * Enqueue js to the customize in order to avoid the modal natural interations
+	 */
+    function customizer_load(){
+	   ?>
+	    <script>
+		    setTimeout(()=>{
+                jQuery('.wrech-float-btn').css('display','block');
+                jQuery('.wrech-modal').css('display','block');
+                jQuery('.wrech-close-modal,.wrech-float-btn').on('click',function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    jQuery('.wrech-float-btn').css('display','block');
+                    jQuery('.wrech-modal').css('display','block');
+                    return true;
+                });
+
+		    },3000)
+	    </script>
+		<?php
     }
 
 	/**

@@ -42,6 +42,9 @@
     window.Wrech.ModalHandler = new ModalHandler();
 
     $(document).ready(function(){
+        if($('body').hasClass('wp-customizer')){
+            alert(' Customizer');
+        }
         window.Wrech.ModalHandler.init();
     });
 

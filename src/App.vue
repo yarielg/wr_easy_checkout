@@ -6,29 +6,11 @@
         <el-menu
                 default-active="2"
                 class="el-menu-vertical-main"
-                @open="handleOpen"
-                @close="handleClose"
         >
-          <!--<el-sub-menu index="1">
-            <template #title>
-              <el-icon><list /></el-icon>
-              <span>General</span>
-            </template>
-            <el-menu-item-group title="Group One">
-              <el-menu-item index="1-1">item one</el-menu-item>
-              <el-menu-item index="1-2">item one</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="Group Two">
-              <el-menu-item index="1-3">item three</el-menu-item>
-            </el-menu-item-group>
-            <el-sub-menu index="1-4">
-              <template #title>item four</template>
-              <el-menu-item index="1-4-1">item one</el-menu-item>
-            </el-sub-menu>
-          </el-sub-menu>-->
+
           <el-menu-item index="2" @click="changeScreen('cart')">
             <el-icon><shopping-cart /></el-icon>
-            <span>Cart Styles</span>
+            <span>Cart Modal</span>
           </el-menu-item>
           <el-menu-item index="3" @click="changeScreen('settings')">
             <el-icon><setting /></el-icon>
@@ -44,37 +26,6 @@
 
        <div class="cart" v-show="active_screen === 'cart'">
 
-         <p class="wrech-label"><strong>Cart Modal Position</strong>:</p>
-         <el-form-item>
-           <el-radio-group v-model="cart_modal_position">
-             <el-radio-button class="btn_position" label="modal_left" ><img class="position_image" :src="plugin_url + '/assets/images/modal_left.png'" alt=""></el-radio-button>
-             <el-radio-button class="btn_position" label="modal_right" ><img class="position_image" :src="plugin_url + '/assets/images/modal_right.png'" alt=""></el-radio-button>
-           </el-radio-group>
-         </el-form-item>
-
-         <p class="wrech-label"><strong>Cart Float Button Position</strong>:</p>
-         <el-form-item>
-           <el-radio-group v-model="float_btn_position">
-             <el-radio-button class="btn_position" label="bottom_left" ><img class="position_image" :src="plugin_url + '/assets/images/bottom_left.png'" alt=""></el-radio-button>
-             <el-radio-button class="btn_position" label="bottom_right" ><img class="position_image" :src="plugin_url + '/assets/images/bottom_right.png'" alt=""></el-radio-button>
-             <el-radio-button class="btn_position" label="up_right" ><img class="position_image" :src="plugin_url + '/assets/images/up_right.png'" alt=""></el-radio-button>
-             <el-radio-button class="btn_position" label="up_left"><img class="position_image" :src="plugin_url + '/assets/images/up_left.png'" alt=""></el-radio-button>
-           </el-radio-group>
-         </el-form-item>
-
-         <br>
-         <p class="wrech-label"><strong>Cart Float Button Background:</strong></p>
-         <el-form-item>
-           <el-color-picker v-model="float_btn_bg" size="large" />
-         </el-form-item>
-
-         <br>
-         <p class="wrech-label"><strong>Cart Float Bubble Background:</strong></p>
-         <el-form-item>
-           <el-color-picker v-model="float_bubble_bg" size="large" />
-         </el-form-item>
-
-         <br>
          <p class="wrech-label"><strong>Cart Icon:</strong></p>
          <el-upload
                  ref="upload"
@@ -94,6 +45,8 @@
          >
            <el-icon><plus /></el-icon>
          </el-upload>
+
+         <p class="wrech-label"><strong>Design: </strong> <a target="_blank" href="/wp-admin/customize.php?autofocus%5Bpanel%5D=2Fwrech_mod_main">Go to Customizer</a></p>
 
        </div>
         <div class="settings" v-show="active_screen === 'settings'">
@@ -130,10 +83,6 @@
     data() {
       return {
         loading: false,
-        float_btn_position: wrech_settings_params.settings.float_btn_position,
-        cart_modal_position: wrech_settings_params.settings.cart_modal_position,
-        float_btn_bg: wrech_settings_params.settings.float_btn_bg,
-        float_bubble_bg: wrech_settings_params.settings.float_bubble_bg,
         cart_icon: null,
         uploaded_files: [{
           url: wrech_settings_params.settings.cart_icon_url
@@ -190,11 +139,7 @@
       saveCustomization(){
         const formData = new FormData();
         formData.append('action', 'wrech_save_customizations');
-        formData.append('float_btn_position', this.float_btn_position);
         formData.append('excluded_pages', this.excluded_pages);
-        formData.append('cart_modal_position', this.cart_modal_position);
-        formData.append('float_btn_bg', this.float_btn_bg);
-        formData.append('float_bubble_bg', this.float_bubble_bg);
 
         this.loading = true;
         axios.post(wrech_settings_params.ajax_url, formData)

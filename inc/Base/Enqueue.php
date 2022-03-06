@@ -107,19 +107,16 @@ class Enqueue{
                     opacity:0;
                     transform: translateX(420px);
                 }
-
                 100% {
                     opacity: 1;
                     transform: translateX(0);
                 }
             }
-
             @keyframes slideOut {
                 0%   {
                     opacity:1;
                     transform: translateX(0);
                 }
-
                 100% {
                     opacity: 0;
                     transform: translateX(420px);
@@ -129,6 +126,7 @@ class Enqueue{
             else {  ?>
             .wrech-modal{
                 left: 0;
+                direction:ltr;
             }
             @-webkit-keyframes slideIn {
                 0%   {
@@ -162,7 +160,29 @@ class Enqueue{
             .wrech-cart-count{
                 background: <?php echo $mod_settings['wrech_float_bubble_bg'] ?>;
             }
-
+            .wrech-header-modal{
+                background: <?php echo $mod_settings['wrech_header_bg'] ?>;
+            }
+            .wrech-modal-cart-heading p{
+                color: <?php echo $mod_settings['wrech_header_heading_color'] ?>;
+            }
+            #wrech-coupon_code{
+                border-radius: <?php echo $mod_settings['wrech_coupon_input_radius'] ?>px;
+            }
+            #wrech-apply-coupon{
+                border-radius: <?php echo $mod_settings['wrech_coupon_button_radius'] ?>px;
+            }
+            .wrech_remove_item_img{
+                background-color: <?php echo $mod_settings['wrech_cart_item_close_icon_color'] ?>;
+                mask: url('<?php echo $mod_settings['wrech_cart_item_close_icon_color'] ?>') no-repeat center / contain;
+                -webkit-mask: url('<?php echo WRECH_PLUGIN_URL . '/assets/images/' . $mod_settings['wrech_cart_item_close_icon'] ?>.png') no-repeat center / contain;
+            }
+            /* Cart Items */
+            .wrech-close-modal{
+                background-color: <?php echo $mod_settings['wrech_header_close_icon_color'] ?>;
+                mask: url('<?php echo $mod_settings['wrech_cart_header_close_icon'] ?>.png') no-repeat center / contain;
+                -webkit-mask: url('<?php echo WRECH_PLUGIN_URL . '/assets/images/' . $mod_settings['wrech_cart_header_close_icon'] ?>.png') no-repeat center / contain;
+            }
 		</style>
 		<?php
 	}

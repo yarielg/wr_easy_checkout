@@ -54,7 +54,9 @@ class Checkout{
                                  .  apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		                        'woocommerce_cart_item_remove_link',
 		                        sprintf(
-			                        '<a href="'.esc_url( wc_get_cart_remove_url( $cart_item_key ) ).'" class="wrech_cart_item_remove" aria-label="'.esc_attr__( 'Remove this item', 'woocommerce' ).'" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s"><img src="'.WRECH_PLUGIN_URL . '/assets/images/close.png'.'" class="wrech_remove_item_img" alt=""></a>',
+			                        '<a href="'.esc_url( wc_get_cart_remove_url( $cart_item_key ) ).'" class="wrech_cart_item_remove" aria-label="'.esc_attr__( 'Remove this item', 'woocommerce' ).'" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s">
+			                            <span class="wrech_remove_item_img"></span>
+			                        </a>',
 			                        esc_attr( $product_id ),
 			                        esc_attr( $cart_item_key ),
 			                        esc_attr( $_product->get_sku() )
@@ -161,9 +163,8 @@ class Checkout{
 
                 <input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon', 'woocommerce' ); ?>" id="wrech-coupon_code" value="" />
                 <button id="wrech-apply-coupon" type="submit" class="button wrech-btn" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply', 'woocommerce' ); ?></button>
-
-            <div class="clear"></div>
-
+                <span class="wrech-close-modal"></span>
+            <!--<img class="wrech-close-modal" src="<?php /*echo WRECH_PLUGIN_URL . '/assets/images/close.png' */?>" alt="">-->
         </form>
 
         <?php

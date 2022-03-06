@@ -121,11 +121,7 @@ class Ajax {
 	function save_customizations(){
 
 		$settings = array();
-		$settings['float_btn_position'] = $_POST['float_btn_position'];
 		$settings['excluded_pages'] = $_POST['excluded_pages'];
-		$settings['cart_modal_position'] = $_POST['cart_modal_position'];
-		$settings['float_btn_bg'] = $_POST['float_btn_bg'];
-		$settings['float_bubble_bg'] = $_POST['float_bubble_bg'];
 
 		wrech_save_settings($settings);
 		echo  json_encode(array('success' => true, 'post' => $_POST));
