@@ -160,11 +160,8 @@ class Checkout{
 		}
         ?>
         <form id="wrech-coupon-form" class="wrech-coupon-form wrech-checkout_coupon" method="post">
-
-                <input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon', 'woocommerce' ); ?>" id="wrech-coupon_code" value="" />
-                <button id="wrech-apply-coupon" type="submit" class="button wrech-btn" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply', 'woocommerce' ); ?></button>
-                <span class="wrech-close-modal"></span>
-            <!--<img class="wrech-close-modal" src="<?php /*echo WRECH_PLUGIN_URL . '/assets/images/close.png' */?>" alt="">-->
+            <input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon', 'woocommerce' ); ?>" id="wrech-coupon_code" value="" />
+            <button id="wrech-apply-coupon" type="submit" class="button wrech-btn" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply', 'woocommerce' ); ?></button>
         </form>
 
         <?php

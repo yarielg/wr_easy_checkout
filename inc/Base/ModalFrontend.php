@@ -37,6 +37,7 @@ class ModalFrontend{
                     <p><?php echo $mod_settings['wrech_header_heading'] ?></p>
                 </div>
                 <?php echo Checkout::coupon() ?>
+                <span class="wrech-close-modal"></span>
             </div>
 
             <!-- Modal Content -->
